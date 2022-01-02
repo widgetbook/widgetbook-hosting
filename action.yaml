@@ -1,0 +1,12 @@
+name: 'Widgetbook Hosting'
+description: 'Uploads a Flutter application to the Widgetbook hosting solution.'
+inputs:
+  path:
+    description: 'The path to the web build of the Widgetbook'
+    required: true
+    default: 'build/web'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
