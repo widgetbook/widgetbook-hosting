@@ -1,6 +1,18 @@
 import 'dart:io';
 
+import 'package:args/args.dart';
+
 void main(List<String> arguments) {
+  final parser = ArgParser()
+    ..addOption(
+      'path',
+      mandatory: true,
+    );
+
+  final parsedArguments = parser.parse(arguments);
+
+  final path = parsedArguments['path'] as String;
+
   final env = Platform.environment;
   final branch = env['GITHUB_REF_NAME'];
   final actionVersion = env['GITHUB_ACTION_REF'];
@@ -20,6 +32,8 @@ void main(List<String> arguments) {
 
   print('Version: $actionVersion');
   print('Runner OS: $runnerOS');
+
+  print('Path: path');
 
   print('Arguments');
   print(arguments);
