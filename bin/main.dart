@@ -3,6 +3,9 @@ import 'dart:io';
 import 'package:args/args.dart';
 
 void main(List<String> arguments) {
+  print('Arguments');
+  print(arguments);
+
   final parser = ArgParser()
     ..addOption(
       'path',
@@ -33,8 +36,5 @@ void main(List<String> arguments) {
   print('Version: $actionVersion');
   print('Runner OS: $runnerOS');
 
-  print('Path: path');
-
-  print('Arguments');
-  print(arguments);
+  print('Path: $path');
 }
