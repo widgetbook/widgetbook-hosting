@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 
-void main(List<String> arguments) {
+void main(List<String> arguments) async {
   print('Arguments');
   print(arguments);
 
@@ -15,6 +15,10 @@ void main(List<String> arguments) {
   final parsedArguments = parser.parse(arguments);
 
   final path = parsedArguments['path'] as String;
+
+  final dirElements = Directory(path).list().forEach((entity) {
+    print(entity);
+  });
 
   final env = Platform.environment;
   final branch = env['GITHUB_REF_NAME'];
