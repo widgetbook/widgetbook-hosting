@@ -5,9 +5,15 @@ inputs:
     description: 'The path to the web build of the Widgetbook'
     required: true
     default: 'build/web'
+  api_key:
+    description: 'The API key to access Widgetbook backend endpoints'
+    required: true
+  
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - --path
     - ${{ inputs.path }}
+    - --api_key
+    - ${{ inputs.api_key }} 

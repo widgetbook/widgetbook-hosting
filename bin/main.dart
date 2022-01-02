@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:args/args.dart';
 
+import 'widgetbook_http_client.dart';
+import 'widgetbook_zip_encoder.dart';
+
 void main(List<String> arguments) async {
   print('Arguments');
   print(arguments);
@@ -10,15 +13,17 @@ void main(List<String> arguments) async {
     ..addOption(
       'path',
       mandatory: true,
+    )
+    ..addOption(
+      'api_key',
+      mandatory: true,
     );
 
   final parsedArguments = parser.parse(arguments);
 
   final path = parsedArguments['path'] as String;
-
-  final dirElements = Directory(path).list().forEach((entity) {
-    print(entity);
-  });
+  final apiKey = parsedArguments['api_key'] as String;
+  final directory = Directory(path);
 
   final env = Platform.environment;
   final branch = env['GITHUB_REF_NAME'];
@@ -41,4 +46,17 @@ void main(List<String> arguments) async {
   print('Runner OS: $runnerOS');
 
   print('Path: $path');
+
+  final file = WidgetbookZipEncoder().encode(directory);
+  if (file != null) {
+    await WidgetbookHttpClient(apiKey: apiKey).uploadDeployment(
+      deploymentFile: file,
+      branch: branch ?? 'test-branch',
+      repository: repository ?? 'test-repository',
+      commit: commitSha ?? 'deadbeef',
+      actor: actor ?? 'jenshor',
+    );
+  } else {
+    print('Oh not something went wrong');
+  }
 }

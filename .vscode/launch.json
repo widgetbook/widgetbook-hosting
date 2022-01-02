@@ -9,7 +9,12 @@
             "request": "launch",
             "type": "dart",
             "program": "bin/main.dart",
-            "args": ["--path", "build/web"]
+            "args": [
+                "--path", 
+                "test_app/build/web", 
+                "--api_key", 
+                "zYzp8bqsbjZaKPIEVMmXaAxlki6rAe0xPbz5qvMiINdzwrmndu1Qe2lfFlQ9PWdw7c5986lTqJXVOk1MjIJJ6Q=="
+            ]
         }
     ]
 }

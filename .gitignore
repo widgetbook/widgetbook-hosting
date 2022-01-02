@@ -4,3 +4,6 @@
 
 # Conventional directory for build output.
 build/
+
+test_app/
+.DS_Store
