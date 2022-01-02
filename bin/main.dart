@@ -15,6 +15,8 @@ void main(List<String> arguments) {
   print('Branch: $branch');
   print('Commit: $commitSha');
   print('User: $actor');
+  print('Repository: $repository');
+  print('Latest Commit: $latestCommit');
 
   print('Version: $actionVersion');
   print('Runner OS: $runnerOS');
