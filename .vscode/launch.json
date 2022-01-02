@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "dart",
             "program": "bin/main.dart",
-            "args": ["path", "build/web"]
+            "args": ["--path", "build/web"]
         }
     ]
 }

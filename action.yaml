@@ -9,4 +9,5 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - path=${{ inputs.path }}
+    - --path
+    - ${{ inputs.path }}
