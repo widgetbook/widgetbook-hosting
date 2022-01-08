@@ -4,7 +4,7 @@ The Widgetbook Hosting GitHub action allows users to upload the Flutter web vers
 
 # Setup 
 
-Before the web version of your Widgetbook can be upload to the collaboration platform you need to build the web app first. You know best how to build you app but your build action might look like this:
+Before the web version of your Widgetbook can be uploaded to the collaboration platform, you need to build the web app first. You know best how to build your app but your build action might look like this:
 
 ```yaml
 name: Build 
@@ -25,11 +25,11 @@ jobs:
         run: flutter build web -t path/to/main.widgetbook.dart
 ```
 
-By running this script, a folder structure `./buid/web/` with the widgetbook web app will be created. The output folder of the build is required by the Widgetbook Hosting action and will be uploaded to the collaboration platform.
+By running this script, a folder structure `./build/web/` with the widgetbook web app will be created. The output folder of the build is required by the Widgetbook Hosting action and will be uploaded to the collaboration platform.
 
 ## Inputs
 
-The defines the following inputs
+The build defines the following inputs
 
 ### `path`
 
@@ -53,7 +53,7 @@ As a user you can create a new company by clicking the add button.
 
 ![image info](./docs/assets/CreateCompany.png)
 
-> **Alpha Version:** After the company is create you need to logout and then login again. After you logged in again you can view the details of the company.
+> **Alpha Version:** After the company is created, you need to logout and then login again. After you logged in again, you can view the details of the company.
 
 On the detail page of a company, a card which allows to fetch the API key is displayed. 
 
