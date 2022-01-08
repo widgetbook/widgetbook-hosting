@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -53,7 +52,7 @@ class WidgetbookHttpClient {
       final response = e.response;
       if (response != null) {
         final errorResponse = _decodeResponse(response.data);
-        log(errorResponse.toString());
+        print(errorResponse.toString());
       }
     }
   }
