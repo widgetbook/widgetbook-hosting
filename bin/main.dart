@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:args/args.dart';
@@ -57,6 +58,6 @@ void main(List<String> arguments) async {
       actor: actor ?? 'jenshor',
     );
   } else {
-    print('Oh not something went wrong');
+    log('Could not create .zip file for upload.');
   }
 }
