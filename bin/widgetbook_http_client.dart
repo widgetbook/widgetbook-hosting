@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
@@ -29,21 +30,38 @@ class WidgetbookHttpClient {
     required String commit,
     required String actor,
   }) async {
-    await client.post<dynamic>(
-      '/hosting',
-      data: FormData.fromMap(
-        <String, dynamic>{
-          'file': await MultipartFile.fromFile(
-            deploymentFile.path,
-            filename: basename(deploymentFile.path),
-            contentType: MediaType.parse('application/zip'),
-          ),
-          'branch': branch,
-          'repository': repository,
-          'actor': actor,
-          'commit': commit,
-        },
-      ),
-    );
+    try {
+      await client.post<dynamic>(
+        '/hosting',
+        data: FormData.fromMap(
+          <String, dynamic>{
+            'file': await MultipartFile.fromFile(
+              deploymentFile.path,
+              filename: basename(deploymentFile.path),
+              contentType: MediaType.parse('application/zip'),
+            ),
+            'branch': branch,
+            'repository': repository,
+            'actor': actor,
+            'commit': commit,
+            'repository-provider': 'GitHub',
+          },
+        ),
+      );
+    } on DioError catch (e) {
+      final response = e.response;
+      if (response != null) {
+        final errorResponse = _decodeResponse(response.data);
+        print(errorResponse.toString());
+        exit(1);
+      }
+    }
+  }
+
+  Map<String, dynamic> _decodeResponse(dynamic data) {
+    if (data is String) {
+      return json.decode(data) as Map<String, dynamic>;
+    }
+    return data as Map<String, dynamic>;
   }
 }

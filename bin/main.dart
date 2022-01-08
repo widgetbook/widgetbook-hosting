@@ -57,6 +57,6 @@ void main(List<String> arguments) async {
       actor: actor ?? 'jenshor',
     );
   } else {
-    print('Oh not something went wrong');
+    print('Could not create .zip file for upload.');
   }
 }
