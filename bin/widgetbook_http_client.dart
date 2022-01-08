@@ -53,6 +53,7 @@ class WidgetbookHttpClient {
       if (response != null) {
         final errorResponse = _decodeResponse(response.data);
         print(errorResponse.toString());
+        exit(1);
       }
     }
   }
