@@ -29,7 +29,7 @@ By running this script, a folder structure `./build/web/` with the widgetbook we
 
 ## Inputs
 
-The build defines the following inputs
+The action defines the following inputs
 
 ### `path`
 
