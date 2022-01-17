@@ -1,16 +1,19 @@
 import 'dart:io';
 
+import 'package:helper/helper.dart';
+import 'package:parser/parser.dart';
+
 import 'gitlab_deployment_parser.dart';
 import 'package:path/path.dart' as path;
 
-void main(List<String> arguments) {
+void main(List<String> arguments) async {
   final deploymentData = GitlabDeploymentParser().parse();
   final apiKey = parseApiKey();
   final buildPath = parseBuildPath();
+
   final fullPath = path.join(
     'builds',
     deploymentData.repositoryName,
-    deploymentData.branchName,
     buildPath,
   );
 
@@ -21,6 +24,17 @@ void main(List<String> arguments) {
 
   print('Build Path: $buildPath');
   print('Path: $fullPath');
+
+  final directory = Directory(fullPath);
+  final file = WidgetbookZipEncoder().encode(directory);
+  if (file != null) {
+    await WidgetbookHttpClient(apiKey: apiKey).uploadDeployment(
+      deploymentFile: file,
+      data: deploymentData,
+    );
+  } else {
+    print('Could not create .zip file for upload.');
+  }
 }
 
 String parseApiKey() {

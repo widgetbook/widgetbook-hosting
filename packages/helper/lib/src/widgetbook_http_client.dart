@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:http_parser/http_parser.dart';
+import 'package:parser/parser.dart';
 import 'package:path/path.dart';
 
 class WidgetbookHttpClient {
@@ -25,10 +26,7 @@ class WidgetbookHttpClient {
 
   Future<void> uploadDeployment({
     required File deploymentFile,
-    required String branch,
-    required String repository,
-    required String commit,
-    required String actor,
+    required DeploymentData data,
   }) async {
     try {
       await client.post<dynamic>(
@@ -40,11 +38,11 @@ class WidgetbookHttpClient {
               filename: basename(deploymentFile.path),
               contentType: MediaType.parse('application/zip'),
             ),
-            'branch': branch,
-            'repository': repository,
-            'actor': actor,
-            'commit': commit,
-            'repository-provider': 'GitHub',
+            'branch': data.branchName,
+            'repository': data.repositoryName,
+            'actor': data.actor,
+            'commit': data.commitSha,
+            'repository-provider': data.provider,
           },
         ),
       );

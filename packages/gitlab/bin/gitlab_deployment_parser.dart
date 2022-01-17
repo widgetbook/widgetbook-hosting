@@ -21,6 +21,7 @@ class GitlabDeploymentParser extends DeploymentParser {
       branchName: branchName,
       commitSha: commitSha,
       repositoryName: repositoryName,
+      provider: 'GitLab',
     );
   }
 }
