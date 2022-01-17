@@ -11,7 +11,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: '/packages/widgetbook_hosting/Dockerfile'
   args:
     - --path
     - ${{ inputs.path }}

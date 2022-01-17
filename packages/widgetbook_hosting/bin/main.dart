@@ -21,6 +21,8 @@ void main(List<String> arguments) async {
 
   final parsedArguments = parser.parse(arguments);
 
+  print(parsedArguments.arguments);
+
   final path = parsedArguments['path'] as String;
   final apiKey = parsedArguments['api_key'] as String;
   final directory = Directory(path);
