@@ -5,7 +5,7 @@ import 'package:path/path.dart' as path;
 
 import 'gitlab_deployment_parser.dart';
 
-void main(List<String> arguments) async {
+Future<void> main(List<String> arguments) async {
   final deploymentData = GitlabDeploymentParser().parse();
   final apiKey = parseApiKey();
   final buildPath = parseBuildPath();
@@ -15,14 +15,6 @@ void main(List<String> arguments) async {
     deploymentData.repositoryName,
     buildPath,
   );
-
-  print('Branch: ${deploymentData.branchName}');
-  print('Commit: ${deploymentData.commitSha}');
-  print('User: ${deploymentData.actor}');
-  print('Repository: ${deploymentData.repositoryName}');
-
-  print('Build Path: $buildPath');
-  print('Path: $fullPath');
 
   final directory = Directory(fullPath);
   final file = WidgetbookZipEncoder().encode(directory);

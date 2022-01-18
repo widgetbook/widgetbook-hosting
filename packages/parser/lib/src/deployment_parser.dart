@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:parser/src/models/deployment_data.dart';
 
+/// Parses environment variables into [DeploymentData].
 abstract class DeploymentParser {
   /// Creates a new instance of [DeploymentParser].
   const DeploymentParser();

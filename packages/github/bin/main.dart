@@ -5,10 +5,7 @@ import 'package:helper/helper.dart';
 
 import 'github_deployment_parser.dart';
 
-void main(List<String> arguments) async {
-  print('Arguments');
-  print(arguments);
-
+Future<void> main(List<String> arguments) async {
   final parser = ArgParser()
     ..addOption(
       'path',
@@ -20,8 +17,6 @@ void main(List<String> arguments) async {
     );
 
   final parsedArguments = parser.parse(arguments);
-
-  print(parsedArguments.arguments);
 
   final path = parsedArguments['path'] as String;
   final apiKey = parsedArguments['api_key'] as String;

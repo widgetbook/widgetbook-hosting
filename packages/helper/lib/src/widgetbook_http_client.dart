@@ -6,6 +6,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:parser/parser.dart';
 import 'package:path/path.dart';
 
+/// A client to connect to the Widgetbook Cloud backend
 class WidgetbookHttpClient {
   /// Creates a new instance of [WidgetbookHttpClient].
   WidgetbookHttpClient({
@@ -22,8 +23,10 @@ class WidgetbookHttpClient {
         );
   }
 
+  /// underlying [Dio] client
   final Dio client;
 
+  /// Uploads the deployment .zip file to the Widgetbook Cloud backend
   Future<void> uploadDeployment({
     required File deploymentFile,
     required DeploymentData data,
