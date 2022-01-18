@@ -12,5 +12,3 @@ RUN dart compile exe bin/main.dart -o bin/main
 FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/bitbucket/bin/main /app/bin/
-
-RUN ["/bin/bash", "-c", "/app/bin/main"]
