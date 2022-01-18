@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY . .
 
-WORKDIR /app/gitlab
+WORKDIR /app/bitbucket
 COPY pubspec.* ./
 RUN dart pub get
 
