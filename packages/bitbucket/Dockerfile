@@ -13,6 +13,6 @@ RUN dart compile exe bin/main.dart -o bin/main
 
 FROM scratch
 COPY --from=build /runtime/ /
-COPY --from=build /app/gitlab/bin/main /app/bin/
+COPY --from=build /app/bitbucket/bin/main /app/bin/
 
 ENTRYPOINT [ "/app/bin/main" ]

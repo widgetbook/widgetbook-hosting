@@ -1,0 +1,17 @@
+name: bitbucket
+description: A simple command-line application.
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+dependencies:
+  helper:
+    path: ../helper
+  parser:
+    path: ../parser
+  path: ^1.8.1
+
+
+dev_dependencies:
+  lints: ^1.0.0
+  very_good_analysis: ^2.4.0
