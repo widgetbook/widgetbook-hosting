@@ -17,6 +17,7 @@ Future<void> main(List<String> arguments) async {
   );
 
   final directory = Directory(fullPath);
+  print('path: $fullPath');
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
     await WidgetbookHttpClient(apiKey: apiKey).uploadDeployment(
