@@ -3,9 +3,7 @@ on:
     paths:
       - "packages/bitbucket/**"
       - ".github/workflows/bitbucket.yaml"
-  push:
-    branches:
-      - main
+
 name: bitbucket
 jobs:
   build:

@@ -1,9 +1,7 @@
 on: 
-  pull_request:
-    paths:
-      - "packages/gitlab/**"
-      - ".github/workflows/gitlab.yaml"
-
+  push:
+    branches:
+      - main
 name: gitlab
 jobs:
   build:
@@ -24,8 +22,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
 
     - name: Build Docker Image
-      run: docker build -t widgetbook/widgetbook-hosting-gitlab:dev -f "gitlab/Dockerfile" .
+      run: docker build -t widgetbook/widgetbook-hosting-gitlab:latest -f "gitlab/Dockerfile" .
 
     - name: Push Docker Image to Artifact Registry
       run: |
-        docker push widgetbook/widgetbook-hosting-gitlab:dev
+        docker push widgetbook/widgetbook-hosting-gitlab:latest
