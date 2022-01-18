@@ -10,14 +10,8 @@ Future<void> main(List<String> arguments) async {
   final apiKey = parseApiKey();
   final buildPath = parseBuildPath();
 
-  final fullPath = path.join(
-    'builds',
-    deploymentData.repositoryName,
-    buildPath,
-  );
+  final directory = Directory(buildPath);
 
-  final directory = Directory(fullPath);
-  print('path: $fullPath');
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
     await WidgetbookHttpClient(apiKey: apiKey).uploadDeployment(
