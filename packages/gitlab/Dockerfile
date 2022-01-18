@@ -14,3 +14,5 @@ RUN dart compile exe bin/main.dart -o bin/main
 FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/gitlab/bin/main /app/bin/
+
+CMD [ "/app/bin/main" ]
