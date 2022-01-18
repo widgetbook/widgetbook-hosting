@@ -13,4 +13,6 @@ FROM scratch
 COPY --from=build /runtime/ /
 COPY --from=build /app/bitbucket/bin/main /app/bin/
 
+SHELL ["/bin/bash", "-c"]
+
 # ENTRYPOINT [ "/app/bin/main" ]
