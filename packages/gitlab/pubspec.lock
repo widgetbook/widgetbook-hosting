@@ -42,7 +42,7 @@ packages:
       path: "../helper"
       relative: true
     source: path
-    version: "1.0.0"
+    version: "0.0.0"
   http_parser:
     dependency: transitive
     description:
@@ -65,7 +65,7 @@ packages:
     source: path
     version: "1.0.0"
   path:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path
       url: "https://pub.dartlang.org"

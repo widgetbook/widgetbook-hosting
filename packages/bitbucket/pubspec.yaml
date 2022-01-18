@@ -9,7 +9,6 @@ dependencies:
     path: ../helper
   parser:
     path: ../parser
-  path: ^1.8.1
 
 
 dev_dependencies:

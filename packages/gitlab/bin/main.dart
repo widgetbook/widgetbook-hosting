@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:helper/helper.dart';
-import 'package:path/path.dart' as path;
 
 import 'gitlab_deployment_parser.dart';
 
