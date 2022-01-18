@@ -5,7 +5,6 @@ WORKDIR /app
 COPY . .
 
 WORKDIR /app/bitbucket
-COPY pubspec.* ./
 RUN dart pub get
 
 RUN dart pub get --offline
