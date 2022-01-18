@@ -9,8 +9,8 @@ COPY pubspec.* ./
 RUN dart pub get
 
 RUN dart pub get --offline
-RUN dart compile exe bin/main.dart -o bin/widgetbook-hosting
+RUN dart compile exe bin/main.dart -o bin/main
 
 FROM scratch
 COPY --from=build /runtime/ /
-COPY --from=build /app/gitlab/bin/widgetbook-hosting /
+COPY --from=build /app/gitlab/bin/main /app/bin/
