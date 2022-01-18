@@ -29,7 +29,7 @@ By running this script, a folder structure `./buid/web/` with the widgetbook web
 
 ## Inputs
 
-The defines the following inputs
+The action defines the following inputs
 
 ### `path`
 
