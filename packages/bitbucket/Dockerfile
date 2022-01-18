@@ -6,7 +6,7 @@ COPY . .
 
 WORKDIR /app/bitbucket
 
-RUN dart pub get --offline
+RUN dart pub get
 RUN dart compile exe bin/main.dart -o bin/main
 
 FROM scratch
