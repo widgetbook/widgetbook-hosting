@@ -4,7 +4,7 @@ The Widgetbook Hosting docker image allows Widgetbook Cloud user to upload the w
 
 # Setup 
 
-Before the web version of your Widgetbook can be upload to the collaboration platform you need to build the web app first. You know best how to build you app but your build action might look like this:
+Before the web version of your Widgetbook can be uploaded to the collaboration platform, you need to build the web app first. You know best how to build you app but your build action might look like this:
 
 ```yaml
 pipelines:
@@ -20,7 +20,7 @@ pipelines:
             - build/**
 ```
 
-By running this script, a folder structure `./buid/web/` with the widgetbook web app will be created. The output folder of the build is required by the Widgetbook Hosting action and will be uploaded to the collaboration platform. Since the hosting stage requires the build output, it'll be exposed by the stage via an artifact. 
+By running this script, a folder structure `./build/web/` with the widgetbook web app will be created. The output folder of the build is required by the Widgetbook Hosting action and will be uploaded to the collaboration platform. Since the hosting stage requires the build output, it'll be exposed by the stage via an artifact. 
 
 ## Environment variables
 
@@ -28,7 +28,7 @@ The docker image reads git specific information like branch name, repository nam
 
 ### `WIDGETBOOK_BUILD_PATH`
 
-**Required** The path to the web build of the widgetbook. For small repositories this is likely `build/web/`
+**Required** The path to the web build of the widgetbook. For small repositories this is likely `build/web/`.
 
 
 ### `WIDGETBOOK_API_KEY`
@@ -43,11 +43,11 @@ To create an API key, you need to login with your account at [app.widgetbook.io]
 
 > **Alpha Version:** For now, the only way to become a `Company Owner` is to create a new company.
 
-As a user you can create a new company by clicking the add button. 
+As a user, you can create a new company by clicking the add button. 
 
 ![image info](../../docs/assets/CreateCompany.png)
 
-> **Alpha Version:** After the company is create you need to logout and then login again. After you logged in again you can view the details of the company.
+> **Alpha Version:** After the company is created, you need to logout and then login again. After you logged in again you can view the details of the company.
 
 On the detail page of a company, a card which allows to fetch the API key is displayed. 
 
