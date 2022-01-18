@@ -5,10 +5,8 @@ WORKDIR /app
 COPY . .
 
 WORKDIR /app/gitlab
-COPY pubspec.* ./
 RUN dart pub get
 
-RUN dart pub get --offline
 RUN dart compile exe bin/main.dart -o bin/main
 
 FROM bash:4.4
