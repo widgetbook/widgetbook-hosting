@@ -1,11 +1,15 @@
-name: widgetbook_hosting
+name: github
 description: A simple command-line application.
 
 environment:
   sdk: '>=2.15.0 <3.0.0'
 
 dev_dependencies:
+  helper:
+    path: ../helper
   lints: ^1.0.0
+  parser:
+    path: ../parser
   very_good_analysis: ^2.4.0
 dependencies: 
   archive: ^3.1.8

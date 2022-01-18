@@ -1,12 +1,12 @@
 import 'package:parser/parser.dart';
 
-class GitlabDeploymentParser extends DeploymentParser {
+class GithubDeploymentParser extends DeploymentParser {
   @override
   DeploymentData parseData(Map<String, String> map) {
-    final actor = map['GITLAB_USER_LOGIN'];
-    final branchName = map['CI_COMMIT_BRANCH'];
-    final repositoryName = map['CI_PROJECT_PATH'];
-    final commitSha = map['CI_COMMIT_SHA'];
+    final actor = map['GITHUB_ACTOR'];
+    final branchName = map['GITHUB_REF_NAME'];
+    final repositoryName = map['GITHUB_REPOSITORY'];
+    final commitSha = map['GITHUB_SHA'];
 
     if (actor == null ||
         branchName == null ||
@@ -20,7 +20,7 @@ class GitlabDeploymentParser extends DeploymentParser {
       branchName: branchName,
       commitSha: commitSha,
       repositoryName: repositoryName,
-      provider: 'GitLab',
+      provider: 'GitHub',
     );
   }
 }
