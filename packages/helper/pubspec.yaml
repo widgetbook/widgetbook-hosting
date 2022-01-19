@@ -1,0 +1,15 @@
+name: helper
+description: A starting point for Dart libraries or applications.
+
+environment:
+  sdk: '>=2.15.0 <3.0.0'
+
+dev_dependencies:
+  lints: ^1.0.0
+  test: ^1.16.0
+  very_good_analysis: ^2.4.0
+dependencies: 
+  archive: ^3.1.8
+  dio: ^4.0.4
+  parser:
+    path: ../parser
