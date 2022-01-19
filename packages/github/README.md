@@ -51,17 +51,17 @@ To create an API key, you need to login with your account at [app.widgetbook.io]
 
 As a user you can create a new company by clicking the add button. 
 
-![image info](./docs/assets/CreateCompany.png)
+![image info](../../docs/assets/CreateCompany.png)
 
 > **Alpha Version:** After the company is create you need to logout and then login again. After you logged in again you can view the details of the company.
 
 On the detail page of a company, a card which allows to fetch the API key is displayed. 
 
-![image info](./docs/assets/ApiKey.png)
+![image info](../../docs/assets/ApiKey.png)
 
 Click the card to fetch the API key. The key will be copied to your clipboard.
 
-![image info](./docs/assets/ApiKeyLoaded.png)
+![image info](../../docs/assets/ApiKeyLoaded.png)
 
 # Example Usage 
 
