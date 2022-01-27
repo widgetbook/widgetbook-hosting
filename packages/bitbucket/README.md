@@ -24,7 +24,7 @@ By running this script, a folder structure `./build/web/` with the widgetbook we
 
 ## Environment variables
 
-The docker image reads git specific information like branch name, repository name, etc from the environment variables but also requires two mandatory environment variables provided by the user.
+The docker image reads git specific information like branch name, repository name, etc from the environment variables but also requires two mandatory environment variables provided by the user. In BitBucket you can add repository variables by going to the _repository settings_ and then selecting _repository variables_.
 
 ### `WIDGETBOOK_BUILD_PATH`
 
