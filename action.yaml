@@ -11,7 +11,7 @@ inputs:
   
 runs:
   using: 'docker'
-  image: 'hub.docker.com/repository/docker/widgetbook/widgetbook-hosting-github:dev'
+  image: 'docker://widgetbook-hosting-github:dev'
   args:
     - --path
     - ${{ inputs.path }}
