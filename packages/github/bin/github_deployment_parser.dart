@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:parser/parser.dart';
 
 class GithubDeploymentParser extends DeploymentParser {
@@ -12,7 +14,8 @@ class GithubDeploymentParser extends DeploymentParser {
         branchName == null ||
         repositoryName == null ||
         commitSha == null) {
-      throw Exception('Not able to find expected information');
+      print('Unable to find expected information.');
+      exit(64);
     }
 
     return DeploymentData(
