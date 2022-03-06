@@ -6,3 +6,6 @@
 build/
 
 .DS_Store
+
+assets/
+web.zip

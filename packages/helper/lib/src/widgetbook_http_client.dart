@@ -11,16 +11,10 @@ class WidgetbookHttpClient {
   /// Creates a new instance of [WidgetbookHttpClient].
   WidgetbookHttpClient({
     Dio? client,
-    required String apiKey,
   }) : client = client ?? Dio() {
     this.client.options.baseUrl = const bool.fromEnvironment('dart.vm.product')
         ? 'https://api.widgetbook.io/v1/'
-        : 'http://localhost:8080/v1/';
-
-    this.client.options.headers.putIfAbsent(
-          'Authorization',
-          () => 'Bearer $apiKey',
-        );
+        : 'http://localhost:3000/v1/';
   }
 
   /// underlying [Dio] client
@@ -33,7 +27,7 @@ class WidgetbookHttpClient {
   }) async {
     try {
       await client.post<dynamic>(
-        '/hosting',
+        '/builds/deploy',
         data: FormData.fromMap(
           <String, dynamic>{
             'file': await MultipartFile.fromFile(
@@ -45,7 +39,8 @@ class WidgetbookHttpClient {
             'repository': data.repositoryName,
             'actor': data.actor,
             'commit': data.commitSha,
-            'repository-provider': data.provider,
+            'version-control-provider': data.provider,
+            'api-key': data.apiKey,
           },
         ),
       );

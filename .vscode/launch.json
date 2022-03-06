@@ -36,10 +36,10 @@
             "program": "bin/cli.dart",
             "cwd": "packages/cli",
             "args": [
-                "--path", 
-                "test_app/build/web", 
+                "--path",
+                "../../assets/web", 
                 "--api-key", 
-                "1234test"
+                "MKaFf0zMJYwWzSV2HclF8G2gVAkHmvTw"
             ]
         }
 
