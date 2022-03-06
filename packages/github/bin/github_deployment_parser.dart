@@ -24,6 +24,7 @@ class GithubDeploymentParser extends DeploymentParser {
       commitSha: commitSha,
       repositoryName: repositoryName,
       provider: 'GitHub',
+      apiKey: '',
     );
   }
 }

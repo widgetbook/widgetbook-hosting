@@ -7,11 +7,12 @@ class WidgetbookZipEncoder {
   /// Encodes the directory to a .zip file
   File? encode(Directory directory) {
     if (directory.existsSync()) {
-      const fileName = 'deployment.zip';
+      const fileName = 'web.zip';
       ZipFileEncoder()
         ..create(fileName)
         ..addDirectory(
           directory,
+          includeDirName: false,
         )
         ..close();
       final createdZip = File(fileName);

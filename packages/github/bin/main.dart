@@ -22,11 +22,13 @@ Future<void> main(List<String> arguments) async {
   final apiKey = parsedArguments['api_key'] as String;
   final directory = Directory(path);
 
-  final deploymentData = GithubDeploymentParser().parse();
+  final deploymentData = GithubDeploymentParser().parse().copyWith(
+        apiKey: apiKey,
+      );
 
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
-    await WidgetbookHttpClient(apiKey: apiKey).uploadDeployment(
+    await WidgetbookHttpClient().uploadDeployment(
       deploymentFile: file,
       data: deploymentData,
     );
