@@ -19,6 +19,9 @@ class WidgetbookZipEncoder {
         return null;
       }
       return createdZip;
+    } else {
+      print('Directory ${directory.path} does not exist.');
+      exit(64);
     }
   }
 }

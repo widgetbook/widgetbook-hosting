@@ -2,7 +2,7 @@ FROM dart:stable AS build
 
 WORKDIR /app
 
-COPY . .
+COPY /packages/ .
 
 WORKDIR /app/github
 RUN dart pub get
