@@ -8,8 +8,8 @@ dev_dependencies:
   lints: ^1.0.0
 dependencies: 
   args: ^2.3.0
-  git: ^2.0.0
   helper:
     path: ../helper
   parser:
     path: ../parser
+  version: ^2.0.0
