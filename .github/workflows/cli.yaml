@@ -37,5 +37,5 @@ jobs:
       uses: google-github-actions/upload-cloud-storage@v0.4.0
       with:
         path: packages/cli/cli-v1.aot 
-        destination: widgetbook-cloud.appspot.com
+        destination: widgetbook-cloud.appspot.com/tools
         parent: false
