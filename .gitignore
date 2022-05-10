@@ -9,3 +9,6 @@ build/
 
 assets/
 web.zip
+
+# ignore compiled binaries
+*.aot
