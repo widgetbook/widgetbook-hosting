@@ -1,8 +1,12 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:helper/helper.dart';
 import 'package:parser/parser.dart';
+import 'package:path/path.dart' as p;
+
+import 'user_case_parser.dart';
+import 'widgetbook_http_client.dart';
+import 'widgetbook_zip_encoder.dart';
 
 void main(List<String> arguments) async {
   final parser = ArgParser();
@@ -72,11 +76,23 @@ void main(List<String> arguments) async {
   final actor = args['actor'] as String;
   final gitProvider = args['git-provider'] as String;
 
-  final directory = Directory(path);
+  final buildPath = p.join(
+    path,
+    'build',
+    'web',
+  );
+  final generatedPath = p.join(
+    path,
+    '.dart_tool',
+    'build',
+    'generated',
+  );
 
+  final directory = Directory(buildPath);
+  final useCases = UseCaseParser().parse(generatedPath);
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
-    await WidgetbookHttpClient().uploadDeployment(
+    final uploadInfo = await WidgetbookHttpClient().uploadDeployment(
       deploymentFile: file,
       data: DeploymentData(
         branchName: branch,
@@ -87,6 +103,15 @@ void main(List<String> arguments) async {
         provider: gitProvider,
       ),
     );
+
+    if (uploadInfo != null) {
+      await WidgetbookHttpClient().uploadUseCases(
+        apiKey: apiKey,
+        useCases: useCases,
+        buildId: uploadInfo['build'],
+        projectId: uploadInfo['project'],
+      );
+    }
   } else {
     print('Could not create .zip file for upload.');
   }
