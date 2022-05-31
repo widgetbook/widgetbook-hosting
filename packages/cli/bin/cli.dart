@@ -64,6 +64,14 @@ void main(List<String> arguments) async {
         // CLI is for users running the command locally.
         'CLI',
       ],
+    )
+    ..addOption(
+      'base-branch',
+      help: 'The base branch of the pull-request. For example, main or master.',
+    )
+    ..addOption(
+      'base-commit',
+      help: 'The SHA hash of the commit of the base branch.',
     );
 
   final args = parser.parse(arguments);
@@ -76,20 +84,17 @@ void main(List<String> arguments) async {
   final actor = args['actor'] as String;
   final gitProvider = args['git-provider'] as String;
 
+  final baseBranch = args['base-branch'] as String?;
+  final baseCommit = args['base-commit'] as String?;
+
   final buildPath = p.join(
     path,
     'build',
     'web',
   );
-  final generatedPath = p.join(
-    path,
-    '.dart_tool',
-    'build',
-    'generated',
-  );
 
   final directory = Directory(buildPath);
-  final useCases = UseCaseParser().parse(generatedPath);
+  final useCases = await UseCaseParser().parse(path);
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
     final uploadInfo = await WidgetbookHttpClient().uploadDeployment(
@@ -104,12 +109,20 @@ void main(List<String> arguments) async {
       ),
     );
 
-    if (uploadInfo != null) {
+    if (uploadInfo != null && baseBranch != null && baseCommit != null) {
       await WidgetbookHttpClient().uploadUseCases(
         apiKey: apiKey,
         useCases: useCases,
         buildId: uploadInfo['build'],
         projectId: uploadInfo['project'],
+        baseBranch: baseBranch,
+        baseSha: baseCommit,
+        refBranch: branch,
+        refSha: commit,
+      );
+    } else {
+      print(
+        'HINT: No pull-request information available. Therefore, no review will be create. See docs for more information.',
       );
     }
   } else {

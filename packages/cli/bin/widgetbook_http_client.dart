@@ -28,6 +28,10 @@ class WidgetbookHttpClient {
     required List<UseCaseData> useCases,
     required String buildId,
     required String projectId,
+    required String baseBranch,
+    required String refBranch,
+    required String baseSha,
+    required String refSha,
   }) async {
     if (useCases.isNotEmpty) {
       await client.post<dynamic>(
@@ -37,6 +41,10 @@ class WidgetbookHttpClient {
           useCases: useCases,
           buildId: buildId,
           projectId: projectId,
+          baseBranch: baseBranch,
+          refBranch: refBranch,
+          baseSha: baseSha,
+          refSha: refSha,
         ).toJson(),
       );
     }

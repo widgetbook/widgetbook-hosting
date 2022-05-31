@@ -15,6 +15,10 @@ _$_CreateUseCasesRequest _$$_CreateUseCasesRequestFromJson(
           .toList(),
       buildId: json['buildId'] as String,
       projectId: json['projectId'] as String,
+      baseBranch: json['baseBranch'] as String,
+      refBranch: json['refBranch'] as String,
+      baseSha: json['baseSha'] as String,
+      refSha: json['refSha'] as String,
     );
 
 Map<String, dynamic> _$$_CreateUseCasesRequestToJson(
@@ -24,4 +28,8 @@ Map<String, dynamic> _$$_CreateUseCasesRequestToJson(
       'useCases': instance.useCases,
       'buildId': instance.buildId,
       'projectId': instance.projectId,
+      'baseBranch': instance.baseBranch,
+      'refBranch': instance.refBranch,
+      'baseSha': instance.baseSha,
+      'refSha': instance.refSha,
     };

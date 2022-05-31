@@ -25,6 +25,10 @@ mixin _$CreateUseCasesRequest {
   List<UseCaseData> get useCases => throw _privateConstructorUsedError;
   String get buildId => throw _privateConstructorUsedError;
   String get projectId => throw _privateConstructorUsedError;
+  String get baseBranch => throw _privateConstructorUsedError;
+  String get refBranch => throw _privateConstructorUsedError;
+  String get baseSha => throw _privateConstructorUsedError;
+  String get refSha => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,7 +45,11 @@ abstract class $CreateUseCasesRequestCopyWith<$Res> {
       {String apiKey,
       List<UseCaseData> useCases,
       String buildId,
-      String projectId});
+      String projectId,
+      String baseBranch,
+      String refBranch,
+      String baseSha,
+      String refSha});
 }
 
 /// @nodoc
@@ -59,6 +67,10 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
     Object? useCases = freezed,
     Object? buildId = freezed,
     Object? projectId = freezed,
+    Object? baseBranch = freezed,
+    Object? refBranch = freezed,
+    Object? baseSha = freezed,
+    Object? refSha = freezed,
   }) {
     return _then(_value.copyWith(
       apiKey: apiKey == freezed
@@ -77,6 +89,22 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
               as String,
+      baseBranch: baseBranch == freezed
+          ? _value.baseBranch
+          : baseBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      refBranch: refBranch == freezed
+          ? _value.refBranch
+          : refBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseSha: baseSha == freezed
+          ? _value.baseSha
+          : baseSha // ignore: cast_nullable_to_non_nullable
+              as String,
+      refSha: refSha == freezed
+          ? _value.refSha
+          : refSha // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -92,7 +120,11 @@ abstract class _$$_CreateUseCasesRequestCopyWith<$Res>
       {String apiKey,
       List<UseCaseData> useCases,
       String buildId,
-      String projectId});
+      String projectId,
+      String baseBranch,
+      String refBranch,
+      String baseSha,
+      String refSha});
 }
 
 /// @nodoc
@@ -113,6 +145,10 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
     Object? useCases = freezed,
     Object? buildId = freezed,
     Object? projectId = freezed,
+    Object? baseBranch = freezed,
+    Object? refBranch = freezed,
+    Object? baseSha = freezed,
+    Object? refSha = freezed,
   }) {
     return _then(_$_CreateUseCasesRequest(
       apiKey: apiKey == freezed
@@ -131,6 +167,22 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.projectId
           : projectId // ignore: cast_nullable_to_non_nullable
               as String,
+      baseBranch: baseBranch == freezed
+          ? _value.baseBranch
+          : baseBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      refBranch: refBranch == freezed
+          ? _value.refBranch
+          : refBranch // ignore: cast_nullable_to_non_nullable
+              as String,
+      baseSha: baseSha == freezed
+          ? _value.baseSha
+          : baseSha // ignore: cast_nullable_to_non_nullable
+              as String,
+      refSha: refSha == freezed
+          ? _value.refSha
+          : refSha // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -142,7 +194,11 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
       {required this.apiKey,
       required final List<UseCaseData> useCases,
       required this.buildId,
-      required this.projectId})
+      required this.projectId,
+      required this.baseBranch,
+      required this.refBranch,
+      required this.baseSha,
+      required this.refSha})
       : _useCases = useCases;
 
   factory _$_CreateUseCasesRequest.fromJson(Map<String, dynamic> json) =>
@@ -161,10 +217,18 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
   final String buildId;
   @override
   final String projectId;
+  @override
+  final String baseBranch;
+  @override
+  final String refBranch;
+  @override
+  final String baseSha;
+  @override
+  final String refSha;
 
   @override
   String toString() {
-    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId)';
+    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId, baseBranch: $baseBranch, refBranch: $refBranch, baseSha: $baseSha, refSha: $refSha)';
   }
 
   @override
@@ -175,7 +239,12 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
             const DeepCollectionEquality().equals(other.apiKey, apiKey) &&
             const DeepCollectionEquality().equals(other._useCases, _useCases) &&
             const DeepCollectionEquality().equals(other.buildId, buildId) &&
-            const DeepCollectionEquality().equals(other.projectId, projectId));
+            const DeepCollectionEquality().equals(other.projectId, projectId) &&
+            const DeepCollectionEquality()
+                .equals(other.baseBranch, baseBranch) &&
+            const DeepCollectionEquality().equals(other.refBranch, refBranch) &&
+            const DeepCollectionEquality().equals(other.baseSha, baseSha) &&
+            const DeepCollectionEquality().equals(other.refSha, refSha));
   }
 
   @JsonKey(ignore: true)
@@ -185,7 +254,11 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
       const DeepCollectionEquality().hash(apiKey),
       const DeepCollectionEquality().hash(_useCases),
       const DeepCollectionEquality().hash(buildId),
-      const DeepCollectionEquality().hash(projectId));
+      const DeepCollectionEquality().hash(projectId),
+      const DeepCollectionEquality().hash(baseBranch),
+      const DeepCollectionEquality().hash(refBranch),
+      const DeepCollectionEquality().hash(baseSha),
+      const DeepCollectionEquality().hash(refSha));
 
   @JsonKey(ignore: true)
   @override
@@ -204,7 +277,11 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
       {required final String apiKey,
       required final List<UseCaseData> useCases,
       required final String buildId,
-      required final String projectId}) = _$_CreateUseCasesRequest;
+      required final String projectId,
+      required final String baseBranch,
+      required final String refBranch,
+      required final String baseSha,
+      required final String refSha}) = _$_CreateUseCasesRequest;
 
   factory _CreateUseCasesRequest.fromJson(Map<String, dynamic> json) =
       _$_CreateUseCasesRequest.fromJson;
@@ -217,6 +294,14 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
   String get buildId => throw _privateConstructorUsedError;
   @override
   String get projectId => throw _privateConstructorUsedError;
+  @override
+  String get baseBranch => throw _privateConstructorUsedError;
+  @override
+  String get refBranch => throw _privateConstructorUsedError;
+  @override
+  String get baseSha => throw _privateConstructorUsedError;
+  @override
+  String get refSha => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CreateUseCasesRequestCopyWith<_$_CreateUseCasesRequest> get copyWith =>

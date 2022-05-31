@@ -30,16 +30,53 @@
             ]
         },
         {
-            "name": "debug (cli)",
+            "name": "debug upload base branch",
             "request": "launch",
             "type": "dart",
             "program": "bin/cli.dart",
             "cwd": "packages/cli",
             "args": [
                 "--path",
-                "../../assets/web", 
+                "/Users/jenshorstmann/Files/Work/repos/widgetbook/widgetbook_comparison_demo/", 
                 "--api-key", 
-                "MKaFf0zMJYwWzSV2HclF8G2gVAkHmvTw"
+                "SPfL78zRS79ibt5HssYJGe2G0iY25MLY",
+                "--branch",
+                "main",
+                "--repository",
+                "repo-comparison",
+                "--commit",
+                "commit-main",
+                "--actor",
+                "jenshor",
+                "--git-provider",
+                "CLI"
+            ]
+        },
+        {
+            "name": "upload PR",
+            "request": "launch",
+            "type": "dart",
+            "program": "bin/cli.dart",
+            "cwd": "packages/cli",
+            "args": [
+                "--path",
+                "/Users/jenshorstmann/Files/Work/repos/widgetbook/widgetbook_comparison_demo/", 
+                "--api-key", 
+                "SPfL78zRS79ibt5HssYJGe2G0iY25MLY",
+                "--branch",
+                "feat/comparison-1",
+                "--repository",
+                "repo-comparison",
+                "--commit",
+                "commit-1",
+                "--actor",
+                "jenshor",
+                "--base-branch",
+                "main",
+                "--base-commit",
+                "commit-main",
+                "--git-provider",
+                "CLI"
             ]
         }
 

@@ -12,6 +12,10 @@ class CreateUseCasesRequest with _$CreateUseCasesRequest {
     required List<UseCaseData> useCases,
     required String buildId,
     required String projectId,
+    required String baseBranch,
+    required String refBranch,
+    required String baseSha,
+    required String refSha,
   }) = _CreateUseCasesRequest;
 
   factory CreateUseCasesRequest.fromJson(Map<String, dynamic> json) =>
