@@ -28,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: dart pub get
 
-    - name: Build AOT-compiled CLI
+    - name: Build CLI
       run: dart compile exe bin/cli.dart -o cli-${{matrix.version}}-${{matrix.os}}-${{matrix.architecture}}.exe
 
     - name: Authenticate Service Account
