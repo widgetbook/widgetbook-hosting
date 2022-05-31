@@ -44,4 +44,6 @@ jobs:
       with:
         path: packages/cli/cli-${{matrix.version}}-${{matrix.os}}-${{matrix.architecture}}.exe
         destination: widgetbook-cloud.appspot.com/tools
+        headers: |-
+          content-type: application/x-msdownload
         parent: false
