@@ -7,11 +7,17 @@ on:
 name: cli
 jobs:
   build:
+    strategy:
+      matrix:
+        os: [ubuntu, macos, windows]
+        version: [v1]
+        osVersion: [latest]
+        architecture: [x86]
     name: build
     defaults:
       run:
         working-directory: packages/cli
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}-${{ matrix.osVersion }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -23,7 +29,7 @@ jobs:
       run: dart pub get
 
     - name: Build AOT-compiled CLI
-      run: dart compile aot-snapshot bin/cli.dart -o cli-v1.aot
+      run: dart compile exe bin/cli.dart -o cli-${{matrix.version}}-${{matrix.os}}-${{matrix.architecture}}.exe
 
     - name: Authenticate Service Account
       uses: google-github-actions/auth@v0.4.0
@@ -36,6 +42,6 @@ jobs:
     - name: Upload folder
       uses: google-github-actions/upload-cloud-storage@v0.4.0
       with:
-        path: packages/cli/cli-v1.aot 
+        path: packages/cli/cli-${{matrix.version}}-${{matrix.os}}-${{matrix.architecture}}.exe
         destination: widgetbook-cloud.appspot.com/tools
         parent: false
