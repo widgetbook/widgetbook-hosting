@@ -4,7 +4,11 @@ import 'package:args/args.dart';
 import 'package:parser/parser.dart';
 import 'package:path/path.dart' as p;
 
-import 'user_case_parser.dart';
+import 'review/devices/device_parser.dart';
+import 'review/locales/locales_parser.dart';
+import 'review/text_scale_factors/text_scale_factor_parser.dart';
+import 'review/themes/theme_parser.dart';
+import 'review/use_cases/user_case_parser.dart';
 import 'widgetbook_http_client.dart';
 import 'widgetbook_zip_encoder.dart';
 
@@ -93,8 +97,17 @@ void main(List<String> arguments) async {
     'web',
   );
 
+  // TODO remove this for production
+  const projectPath = '/Users/jenshorstmann/Files/Work/repos/'
+      'widgetbook/widgetbook_comparison_demo';
+
   final directory = Directory(buildPath);
-  final useCases = await UseCaseParser().parse(path);
+  final useCases = await UseCaseParser(projectPath: projectPath).parse();
+  final themes = await ThemeParser(projectPath: projectPath).parse();
+  final locales = await LocaleParser(projectPath: projectPath).parse();
+  final devices = await DeviceParser(projectPath: projectPath).parse();
+  final textScaleFactors =
+      await TextScaleFactorParser(projectPath: projectPath).parse();
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
     final uploadInfo = await WidgetbookHttpClient().uploadDeployment(
@@ -109,8 +122,13 @@ void main(List<String> arguments) async {
       ),
     );
 
-    if (uploadInfo != null && baseBranch != null && baseCommit != null) {
-      await WidgetbookHttpClient().uploadUseCases(
+    if (uploadInfo != null &&
+        baseBranch != null &&
+        baseCommit != null &&
+        // If a review shall be created, the projects needs to use generator
+        // Generator requires to define at least one theme.
+        themes.isNotEmpty) {
+      await WidgetbookHttpClient().uploadReview(
         apiKey: apiKey,
         useCases: useCases,
         buildId: uploadInfo['build'],
@@ -119,6 +137,10 @@ void main(List<String> arguments) async {
         baseSha: baseCommit,
         refBranch: branch,
         refSha: commit,
+        themes: themes,
+        locales: locales,
+        devices: devices,
+        textScaleFactors: textScaleFactors,
       );
     } else {
       print(

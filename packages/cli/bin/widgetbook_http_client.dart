@@ -6,8 +6,12 @@ import 'package:http_parser/http_parser.dart';
 import 'package:parser/parser.dart';
 import 'package:path/path.dart';
 
-import 'create_use_cases_request.dart';
-import 'use_case_data.dart';
+import 'review/devices/models/device_data.dart';
+import 'review/locales/models/locale_data.dart';
+import 'review/text_scale_factors/models/text_scale_factor_data.dart';
+import 'review/themes/models/theme_data.dart';
+import 'review/use_cases/models/changed_use_case.dart';
+import 'review/use_cases/requests/create_use_cases_request.dart';
 
 /// A client to connect to the Widgetbook Cloud backend
 class WidgetbookHttpClient {
@@ -23,17 +27,22 @@ class WidgetbookHttpClient {
   /// underlying [Dio] client
   final Dio client;
 
-  Future<void> uploadUseCases({
+  Future<void> uploadReview({
     required String apiKey,
-    required List<UseCaseData> useCases,
+    required List<ChangedUseCase> useCases,
     required String buildId,
     required String projectId,
     required String baseBranch,
     required String refBranch,
     required String baseSha,
     required String refSha,
+    required List<ThemeData> themes,
+    required List<LocaleData> locales,
+    required List<DeviceData> devices,
+    required List<TextScaleFactorData> textScaleFactors,
   }) async {
     if (useCases.isNotEmpty) {
+      // TODO rename this endpoint to '/reviews/
       await client.post<dynamic>(
         '/builds/use-cases',
         data: CreateUseCasesRequest(
@@ -45,6 +54,10 @@ class WidgetbookHttpClient {
           refBranch: refBranch,
           baseSha: baseSha,
           refSha: refSha,
+          themes: themes,
+          locales: locales,
+          devices: devices,
+          textScaleFactors: textScaleFactors,
         ).toJson(),
       );
     }

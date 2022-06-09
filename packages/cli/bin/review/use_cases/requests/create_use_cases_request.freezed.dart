@@ -22,13 +22,18 @@ CreateUseCasesRequest _$CreateUseCasesRequestFromJson(
 /// @nodoc
 mixin _$CreateUseCasesRequest {
   String get apiKey => throw _privateConstructorUsedError;
-  List<UseCaseData> get useCases => throw _privateConstructorUsedError;
+  List<ChangedUseCase> get useCases => throw _privateConstructorUsedError;
   String get buildId => throw _privateConstructorUsedError;
   String get projectId => throw _privateConstructorUsedError;
   String get baseBranch => throw _privateConstructorUsedError;
   String get refBranch => throw _privateConstructorUsedError;
   String get baseSha => throw _privateConstructorUsedError;
   String get refSha => throw _privateConstructorUsedError;
+  List<ThemeData> get themes => throw _privateConstructorUsedError;
+  List<LocaleData> get locales => throw _privateConstructorUsedError;
+  List<DeviceData> get devices => throw _privateConstructorUsedError;
+  List<TextScaleFactorData> get textScaleFactors =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,13 +48,17 @@ abstract class $CreateUseCasesRequestCopyWith<$Res> {
       _$CreateUseCasesRequestCopyWithImpl<$Res>;
   $Res call(
       {String apiKey,
-      List<UseCaseData> useCases,
+      List<ChangedUseCase> useCases,
       String buildId,
       String projectId,
       String baseBranch,
       String refBranch,
       String baseSha,
-      String refSha});
+      String refSha,
+      List<ThemeData> themes,
+      List<LocaleData> locales,
+      List<DeviceData> devices,
+      List<TextScaleFactorData> textScaleFactors});
 }
 
 /// @nodoc
@@ -71,6 +80,10 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
     Object? refBranch = freezed,
     Object? baseSha = freezed,
     Object? refSha = freezed,
+    Object? themes = freezed,
+    Object? locales = freezed,
+    Object? devices = freezed,
+    Object? textScaleFactors = freezed,
   }) {
     return _then(_value.copyWith(
       apiKey: apiKey == freezed
@@ -80,7 +93,7 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
       useCases: useCases == freezed
           ? _value.useCases
           : useCases // ignore: cast_nullable_to_non_nullable
-              as List<UseCaseData>,
+              as List<ChangedUseCase>,
       buildId: buildId == freezed
           ? _value.buildId
           : buildId // ignore: cast_nullable_to_non_nullable
@@ -105,6 +118,22 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.refSha
           : refSha // ignore: cast_nullable_to_non_nullable
               as String,
+      themes: themes == freezed
+          ? _value.themes
+          : themes // ignore: cast_nullable_to_non_nullable
+              as List<ThemeData>,
+      locales: locales == freezed
+          ? _value.locales
+          : locales // ignore: cast_nullable_to_non_nullable
+              as List<LocaleData>,
+      devices: devices == freezed
+          ? _value.devices
+          : devices // ignore: cast_nullable_to_non_nullable
+              as List<DeviceData>,
+      textScaleFactors: textScaleFactors == freezed
+          ? _value.textScaleFactors
+          : textScaleFactors // ignore: cast_nullable_to_non_nullable
+              as List<TextScaleFactorData>,
     ));
   }
 }
@@ -118,13 +147,17 @@ abstract class _$$_CreateUseCasesRequestCopyWith<$Res>
   @override
   $Res call(
       {String apiKey,
-      List<UseCaseData> useCases,
+      List<ChangedUseCase> useCases,
       String buildId,
       String projectId,
       String baseBranch,
       String refBranch,
       String baseSha,
-      String refSha});
+      String refSha,
+      List<ThemeData> themes,
+      List<LocaleData> locales,
+      List<DeviceData> devices,
+      List<TextScaleFactorData> textScaleFactors});
 }
 
 /// @nodoc
@@ -149,6 +182,10 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
     Object? refBranch = freezed,
     Object? baseSha = freezed,
     Object? refSha = freezed,
+    Object? themes = freezed,
+    Object? locales = freezed,
+    Object? devices = freezed,
+    Object? textScaleFactors = freezed,
   }) {
     return _then(_$_CreateUseCasesRequest(
       apiKey: apiKey == freezed
@@ -158,7 +195,7 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
       useCases: useCases == freezed
           ? _value._useCases
           : useCases // ignore: cast_nullable_to_non_nullable
-              as List<UseCaseData>,
+              as List<ChangedUseCase>,
       buildId: buildId == freezed
           ? _value.buildId
           : buildId // ignore: cast_nullable_to_non_nullable
@@ -183,6 +220,22 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.refSha
           : refSha // ignore: cast_nullable_to_non_nullable
               as String,
+      themes: themes == freezed
+          ? _value._themes
+          : themes // ignore: cast_nullable_to_non_nullable
+              as List<ThemeData>,
+      locales: locales == freezed
+          ? _value._locales
+          : locales // ignore: cast_nullable_to_non_nullable
+              as List<LocaleData>,
+      devices: devices == freezed
+          ? _value._devices
+          : devices // ignore: cast_nullable_to_non_nullable
+              as List<DeviceData>,
+      textScaleFactors: textScaleFactors == freezed
+          ? _value._textScaleFactors
+          : textScaleFactors // ignore: cast_nullable_to_non_nullable
+              as List<TextScaleFactorData>,
     ));
   }
 }
@@ -192,23 +245,31 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
 class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
   _$_CreateUseCasesRequest(
       {required this.apiKey,
-      required final List<UseCaseData> useCases,
+      required final List<ChangedUseCase> useCases,
       required this.buildId,
       required this.projectId,
       required this.baseBranch,
       required this.refBranch,
       required this.baseSha,
-      required this.refSha})
-      : _useCases = useCases;
+      required this.refSha,
+      required final List<ThemeData> themes,
+      required final List<LocaleData> locales,
+      required final List<DeviceData> devices,
+      required final List<TextScaleFactorData> textScaleFactors})
+      : _useCases = useCases,
+        _themes = themes,
+        _locales = locales,
+        _devices = devices,
+        _textScaleFactors = textScaleFactors;
 
   factory _$_CreateUseCasesRequest.fromJson(Map<String, dynamic> json) =>
       _$$_CreateUseCasesRequestFromJson(json);
 
   @override
   final String apiKey;
-  final List<UseCaseData> _useCases;
+  final List<ChangedUseCase> _useCases;
   @override
-  List<UseCaseData> get useCases {
+  List<ChangedUseCase> get useCases {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_useCases);
   }
@@ -225,10 +286,37 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
   final String baseSha;
   @override
   final String refSha;
+  final List<ThemeData> _themes;
+  @override
+  List<ThemeData> get themes {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_themes);
+  }
+
+  final List<LocaleData> _locales;
+  @override
+  List<LocaleData> get locales {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_locales);
+  }
+
+  final List<DeviceData> _devices;
+  @override
+  List<DeviceData> get devices {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_devices);
+  }
+
+  final List<TextScaleFactorData> _textScaleFactors;
+  @override
+  List<TextScaleFactorData> get textScaleFactors {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_textScaleFactors);
+  }
 
   @override
   String toString() {
-    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId, baseBranch: $baseBranch, refBranch: $refBranch, baseSha: $baseSha, refSha: $refSha)';
+    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId, baseBranch: $baseBranch, refBranch: $refBranch, baseSha: $baseSha, refSha: $refSha, themes: $themes, locales: $locales, devices: $devices, textScaleFactors: $textScaleFactors)';
   }
 
   @override
@@ -244,7 +332,12 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
                 .equals(other.baseBranch, baseBranch) &&
             const DeepCollectionEquality().equals(other.refBranch, refBranch) &&
             const DeepCollectionEquality().equals(other.baseSha, baseSha) &&
-            const DeepCollectionEquality().equals(other.refSha, refSha));
+            const DeepCollectionEquality().equals(other.refSha, refSha) &&
+            const DeepCollectionEquality().equals(other._themes, _themes) &&
+            const DeepCollectionEquality().equals(other._locales, _locales) &&
+            const DeepCollectionEquality().equals(other._devices, _devices) &&
+            const DeepCollectionEquality()
+                .equals(other._textScaleFactors, _textScaleFactors));
   }
 
   @JsonKey(ignore: true)
@@ -258,7 +351,11 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
       const DeepCollectionEquality().hash(baseBranch),
       const DeepCollectionEquality().hash(refBranch),
       const DeepCollectionEquality().hash(baseSha),
-      const DeepCollectionEquality().hash(refSha));
+      const DeepCollectionEquality().hash(refSha),
+      const DeepCollectionEquality().hash(_themes),
+      const DeepCollectionEquality().hash(_locales),
+      const DeepCollectionEquality().hash(_devices),
+      const DeepCollectionEquality().hash(_textScaleFactors));
 
   @JsonKey(ignore: true)
   @override
@@ -274,14 +371,19 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
 
 abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
   factory _CreateUseCasesRequest(
-      {required final String apiKey,
-      required final List<UseCaseData> useCases,
-      required final String buildId,
-      required final String projectId,
-      required final String baseBranch,
-      required final String refBranch,
-      required final String baseSha,
-      required final String refSha}) = _$_CreateUseCasesRequest;
+          {required final String apiKey,
+          required final List<ChangedUseCase> useCases,
+          required final String buildId,
+          required final String projectId,
+          required final String baseBranch,
+          required final String refBranch,
+          required final String baseSha,
+          required final String refSha,
+          required final List<ThemeData> themes,
+          required final List<LocaleData> locales,
+          required final List<DeviceData> devices,
+          required final List<TextScaleFactorData> textScaleFactors}) =
+      _$_CreateUseCasesRequest;
 
   factory _CreateUseCasesRequest.fromJson(Map<String, dynamic> json) =
       _$_CreateUseCasesRequest.fromJson;
@@ -289,7 +391,7 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
   @override
   String get apiKey => throw _privateConstructorUsedError;
   @override
-  List<UseCaseData> get useCases => throw _privateConstructorUsedError;
+  List<ChangedUseCase> get useCases => throw _privateConstructorUsedError;
   @override
   String get buildId => throw _privateConstructorUsedError;
   @override
@@ -302,6 +404,15 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
   String get baseSha => throw _privateConstructorUsedError;
   @override
   String get refSha => throw _privateConstructorUsedError;
+  @override
+  List<ThemeData> get themes => throw _privateConstructorUsedError;
+  @override
+  List<LocaleData> get locales => throw _privateConstructorUsedError;
+  @override
+  List<DeviceData> get devices => throw _privateConstructorUsedError;
+  @override
+  List<TextScaleFactorData> get textScaleFactors =>
+      throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_CreateUseCasesRequestCopyWith<_$_CreateUseCasesRequest> get copyWith =>

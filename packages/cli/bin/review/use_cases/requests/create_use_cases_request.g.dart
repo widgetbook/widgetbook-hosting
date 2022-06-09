@@ -11,7 +11,7 @@ _$_CreateUseCasesRequest _$$_CreateUseCasesRequestFromJson(
     _$_CreateUseCasesRequest(
       apiKey: json['apiKey'] as String,
       useCases: (json['useCases'] as List<dynamic>)
-          .map((e) => UseCaseData.fromJson(e as Map<String, dynamic>))
+          .map((e) => ChangedUseCase.fromJson(e as Map<String, dynamic>))
           .toList(),
       buildId: json['buildId'] as String,
       projectId: json['projectId'] as String,
@@ -19,6 +19,18 @@ _$_CreateUseCasesRequest _$$_CreateUseCasesRequestFromJson(
       refBranch: json['refBranch'] as String,
       baseSha: json['baseSha'] as String,
       refSha: json['refSha'] as String,
+      themes: (json['themes'] as List<dynamic>)
+          .map((e) => ThemeData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      locales: (json['locales'] as List<dynamic>)
+          .map((e) => LocaleData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      devices: (json['devices'] as List<dynamic>)
+          .map((e) => DeviceData.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      textScaleFactors: (json['textScaleFactors'] as List<dynamic>)
+          .map((e) => TextScaleFactorData.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$_CreateUseCasesRequestToJson(
@@ -32,4 +44,8 @@ Map<String, dynamic> _$$_CreateUseCasesRequestToJson(
       'refBranch': instance.refBranch,
       'baseSha': instance.baseSha,
       'refSha': instance.refSha,
+      'themes': instance.themes,
+      'locales': instance.locales,
+      'devices': instance.devices,
+      'textScaleFactors': instance.textScaleFactors,
     };
