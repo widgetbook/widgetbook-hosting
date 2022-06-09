@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu, macos, windows]
-        version: [v1]
+        version: [v2-beta]
         osVersion: [latest]
         architecture: [x86]
     name: build
