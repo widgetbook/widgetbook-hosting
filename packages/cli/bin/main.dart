@@ -131,8 +131,8 @@ void main(List<String> arguments) async {
       await WidgetbookHttpClient().uploadReview(
         apiKey: apiKey,
         useCases: useCases,
-        buildId: uploadInfo['build'],
-        projectId: uploadInfo['project'],
+        buildId: uploadInfo['build'] as String,
+        projectId: uploadInfo['project'] as String,
         baseBranch: baseBranch,
         baseSha: baseCommit,
         refBranch: branch,

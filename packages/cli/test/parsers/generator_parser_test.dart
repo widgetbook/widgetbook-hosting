@@ -1,14 +1,13 @@
 import 'package:file/memory.dart';
-import 'package:file/src/interface/file_system.dart';
 import 'package:test/test.dart';
 
 import '../../bin/parsers/generator_parser.dart';
 
-class TestGenerator extends GeneratorParser {
+class TestGenerator extends GeneratorParser<dynamic> {
   TestGenerator({
-    required String projectPath,
-    required FileSystem fileSystem,
-  }) : super(projectPath: projectPath, fileSystem: fileSystem);
+    required super.projectPath,
+    required super.fileSystem,
+  });
 
   @override
   Future<List> parse() {

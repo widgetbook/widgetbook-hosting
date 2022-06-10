@@ -4,14 +4,13 @@ import 'package:file/file.dart';
 import 'package:path/path.dart' as path;
 
 abstract class GeneratorParser<T> {
-  static const dartToolFolderName = '.dart_tool';
-  static const buildFolderName = 'build';
-  static const generatedFilesFolderName = 'generated';
-
   GeneratorParser({
     required this.projectPath,
     required this.fileSystem,
   });
+  static const dartToolFolderName = '.dart_tool';
+  static const buildFolderName = 'build';
+  static const generatedFilesFolderName = 'generated';
 
   final FileSystem fileSystem;
   final String projectPath;
@@ -45,7 +44,7 @@ abstract class GeneratorParser<T> {
         // We do this because json decode has a weird implementation which
         // causes fromJson method to fail otherwise.
         final stringData = json.encode(item);
-        final correctData = json.decode(stringData);
+        final correctData = json.decode(stringData) as Map<String, dynamic>;
         yield fromJson(correctData);
       }
     }

@@ -6,6 +6,7 @@ import 'package:http_parser/http_parser.dart';
 import 'package:parser/parser.dart';
 import 'package:path/path.dart';
 
+import 'flavor/flavor.dart';
 import 'review/devices/models/device_data.dart';
 import 'review/locales/models/locale_data.dart';
 import 'review/text_scale_factors/models/text_scale_factor_data.dart';
@@ -19,9 +20,18 @@ class WidgetbookHttpClient {
   WidgetbookHttpClient({
     Dio? client,
   }) : client = client ?? Dio() {
-    this.client.options.baseUrl = const bool.fromEnvironment('dart.vm.product')
-        ? 'https://api.widgetbook.io/v1/'
-        : 'http://localhost:3000/v1/';
+    this.client.options.baseUrl = _getUrl();
+  }
+
+  String _getUrl() {
+    switch (Flavor().strategy) {
+      case DeploymentStrategy.production:
+        return 'https://api.widgetbook.io/v1/';
+      case DeploymentStrategy.staging:
+        return 'https://staging.api.widgetbook.io/v1/';
+      case DeploymentStrategy.debug:
+        return 'http://localhost:3000/v1/';
+    }
   }
 
   /// underlying [Dio] client

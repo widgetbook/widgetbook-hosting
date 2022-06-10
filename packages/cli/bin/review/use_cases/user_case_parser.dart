@@ -11,16 +11,13 @@ import 'models/use_case_data.dart';
 
 class UseCaseParser extends GeneratorParser<ChangedUseCase> {
   UseCaseParser({
-    required String projectPath,
-    FileSystem fileSystem = const LocalFileSystem(),
-  }) : super(
-          projectPath: projectPath,
-          fileSystem: fileSystem,
-        );
+    required super.projectPath,
+    super.fileSystem = const LocalFileSystem(),
+  });
 
-  UseCaseData _getUseCase(dynamic data) {
+  UseCaseData _getUseCase(Map<String, dynamic> data) {
     final stringData = json.encode(data);
-    final correctData = json.decode(stringData);
+    final correctData = json.decode(stringData) as Map<String, dynamic>;
     return UseCaseData.fromJson(correctData);
   }
 
@@ -28,11 +25,10 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
     for (final file in files) {
       final items = json.decode(
         file.readAsStringSync(),
-      ) as Iterable;
-      final list = items.toList();
-      List<UseCaseData> useCases = List<UseCaseData>.from(
-        items.map(
-          (model) => _getUseCase(model),
+      ) as Iterable<Map<String, dynamic>>;
+      final useCases = List<UseCaseData>.from(
+        items.map<UseCaseData>(
+          _getUseCase,
         ),
       );
 
@@ -46,17 +42,21 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
   }) {
     // TODO not sure if this works for mono-repos
     return _isMatch(
-            usecasePath: usecase.componentDefinitionPath,
-            diffPath: diff.pathRef) ||
+          usecasePath: usecase.componentDefinitionPath,
+          diffPath: diff.pathRef,
+        ) ||
         _isMatch(
-            usecasePath: usecase.useCaseDefinitionPath,
-            diffPath: diff.pathRef) ||
+          usecasePath: usecase.useCaseDefinitionPath,
+          diffPath: diff.pathRef,
+        ) ||
         _isMatch(
-            usecasePath: usecase.componentDefinitionPath,
-            diffPath: diff.pathBase) ||
+          usecasePath: usecase.componentDefinitionPath,
+          diffPath: diff.pathBase,
+        ) ||
         _isMatch(
-            usecasePath: usecase.useCaseDefinitionPath,
-            diffPath: diff.pathBase);
+          usecasePath: usecase.useCaseDefinitionPath,
+          diffPath: diff.pathBase,
+        );
   }
 
   bool _isMatch({
