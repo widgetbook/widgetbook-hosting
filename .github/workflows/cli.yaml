@@ -30,7 +30,7 @@ jobs:
       run: dart pub get
 
     - name: Build CLI
-      run: dart compile exe bin/main_${{matrix.environment}}.dart -o cli-${{matrix.version}}-${{matrix.environment}}-${{matrix.os}}-${{matrix.architecture}}.exe
+      run: dart compile exe bin/cli_${{matrix.environment}}.dart -o cli-${{matrix.version}}-${{matrix.environment}}-${{matrix.os}}-${{matrix.architecture}}.exe
 
     - name: Authenticate Service Account
       uses: google-github-actions/auth@v0
