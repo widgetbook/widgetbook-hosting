@@ -9,7 +9,7 @@ import '../../../bin/review/locales/models/locale_data.dart';
 
 const localeName1 = 'en';
 const localeName2 = 'de';
-const themeContent1 = """
+const themeContent1 = '''
 [
   {
     "name": "locales",
@@ -22,10 +22,10 @@ const themeContent1 = """
   }
 ]
 
-""";
+''';
 
 void main() {
-  const String projectPath = 'project';
+  const projectPath = 'project';
 
   late MemoryFileSystem fileSystem;
   late LocaleParser parser;
@@ -46,7 +46,7 @@ void main() {
         'parse() returns Theme',
         () async {
           // Setup
-          final file = fileSystem.file(
+          fileSystem.file(
             path.join(
               projectPath,
               GeneratorParser.dartToolFolderName,
@@ -54,10 +54,9 @@ void main() {
               GeneratorParser.generatedFilesFolderName,
               'app.locales.widgetbook.json',
             ),
-          );
-
-          file.create(recursive: true);
-          file.writeAsString(themeContent1);
+          )
+            ..createSync(recursive: true)
+            ..writeAsStringSync(themeContent1);
 
           // Test
           final result = await parser.parse();

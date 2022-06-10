@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-// TODO add very_good_analysis - this looks so bad it hurts my eyes
 import '../../devices/models/device_data.dart';
 import '../../locales/models/locale_data.dart';
 import '../../text_scale_factors/models/text_scale_factor_data.dart';

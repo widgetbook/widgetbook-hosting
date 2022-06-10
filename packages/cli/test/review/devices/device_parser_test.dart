@@ -9,7 +9,7 @@ import '../../../bin/review/devices/models/device_data.dart';
 
 const device1 = 'iPhone 12';
 const device2 = 'iPhone 12 Pro';
-const deviceContent = """
+const deviceContent = '''
 [
   {
     "name": "$device1"
@@ -18,10 +18,10 @@ const deviceContent = """
     "name": "$device2"
   }
 ]
-""";
+''';
 
 void main() {
-  const String projectPath = 'project';
+  const projectPath = 'project';
 
   late MemoryFileSystem fileSystem;
   late DeviceParser parser;
@@ -42,7 +42,7 @@ void main() {
         'parse() returns Devices',
         () async {
           // Setup
-          final file = fileSystem.file(
+          fileSystem.file(
             path.join(
               projectPath,
               GeneratorParser.dartToolFolderName,
@@ -52,10 +52,9 @@ void main() {
               // can access it here and simplify the whole testing environment
               'app.devices.widgetbook.json',
             ),
-          );
-
-          file.create(recursive: true);
-          file.writeAsString(deviceContent);
+          )
+            ..createSync(recursive: true)
+            ..writeAsStringSync(deviceContent);
 
           // Test
           final result = await parser.parse();

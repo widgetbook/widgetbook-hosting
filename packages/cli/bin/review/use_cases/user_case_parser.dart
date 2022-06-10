@@ -63,7 +63,11 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
     required String usecasePath,
     required String? diffPath,
   }) {
-    return diffPath == null ? false : usecasePath.endsWith(diffPath);
+    if (diffPath == null) {
+      return false;
+    } else {
+      return usecasePath.endsWith(diffPath);
+    }
   }
 
   @override

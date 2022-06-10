@@ -8,7 +8,7 @@ import '../../../bin/review/themes/models/theme_data.dart';
 import '../../../bin/review/themes/theme_parser.dart';
 
 const themeName1 = 'Default';
-const themeContent1 = """
+const themeContent1 = '''
 [
   {
     "name": "theme",
@@ -22,10 +22,10 @@ const themeContent1 = """
     "themeName": "$themeName1"
   }
 ]
-""";
+''';
 
 void main() {
-  const String projectPath = 'project';
+  const projectPath = 'project';
 
   late MemoryFileSystem fileSystem;
   late ThemeParser parser;
@@ -46,7 +46,7 @@ void main() {
         'parse() returns Theme',
         () async {
           // Setup
-          final file = fileSystem.file(
+          fileSystem.file(
             path.join(
               projectPath,
               GeneratorParser.dartToolFolderName,
@@ -54,10 +54,9 @@ void main() {
               GeneratorParser.generatedFilesFolderName,
               'app.theme.widgetbook.json',
             ),
-          );
-
-          file.create(recursive: true);
-          file.writeAsString(themeContent1);
+          )
+            ..createSync(recursive: true)
+            ..writeAsStringSync(themeContent1);
 
           // Test
           final result = await parser.parse();

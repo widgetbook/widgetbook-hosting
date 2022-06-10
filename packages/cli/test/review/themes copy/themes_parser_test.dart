@@ -4,19 +4,22 @@ import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 import '../../../bin/parsers/generator_parser.dart';
-import '../../../bin/review/text_scale_factors/models/text_scale_factor_data.dart';
-import '../../../bin/review/text_scale_factors/text_scale_factor_parser.dart';
+import '../../../bin/review/themes/models/theme_data.dart';
+import '../../../bin/review/themes/theme_parser.dart';
 
-const content = '''
+const themeName1 = 'Default';
+const themeContent1 = '''
 [
   {
-    "value": 1.0
-  },
-  {
-    "value": 2.0
-  },
-  {
-    "value": 3.0
+    "name": "theme",
+    "importStatement": "package:widgetbook_comparison_demo/main.dart",
+    "dependencies": [
+      "dart:core",
+      "package:widgetbook_annotation/widgetbook_annotation.dart",
+      "package:flutter/material.dart"
+    ],
+    "isDefault": false,
+    "themeName": "$themeName1"
   }
 ]
 ''';
@@ -25,11 +28,11 @@ void main() {
   const projectPath = 'project';
 
   late MemoryFileSystem fileSystem;
-  late TextScaleFactorParser parser;
+  late ThemeParser parser;
   setUp(
     () {
       fileSystem = MemoryFileSystem();
-      parser = TextScaleFactorParser(
+      parser = ThemeParser(
         fileSystem: fileSystem,
         projectPath: projectPath,
       );
@@ -37,10 +40,10 @@ void main() {
   );
 
   group(
-    '$TextScaleFactorParser',
+    '$ThemeParser',
     () {
       test(
-        'parse() returns [1, 2, 3]',
+        'parse() returns Theme',
         () async {
           // Setup
           fileSystem.file(
@@ -49,11 +52,11 @@ void main() {
               GeneratorParser.dartToolFolderName,
               GeneratorParser.buildFolderName,
               GeneratorParser.generatedFilesFolderName,
-              'app.textscalefactors.widgetbook.json',
+              'app.theme.widgetbook.json',
             ),
           )
             ..createSync(recursive: true)
-            ..writeAsStringSync(content);
+            ..writeAsStringSync(themeContent1);
 
           // Test
           final result = await parser.parse();
@@ -61,28 +64,9 @@ void main() {
             result,
             equals(
               [
-                TextScaleFactorData(value: 1),
-                TextScaleFactorData(value: 2),
-                TextScaleFactorData(value: 3),
+                ThemeData(name: themeName1),
               ],
             ),
-          );
-        },
-      );
-
-      test(
-        'parse() returns []',
-        () async {
-          // Setup
-          // No file
-
-          // Test
-          final result = await parser.parse();
-          expect(
-            result,
-            equals([
-              TextScaleFactorData(value: 1),
-            ]),
           );
         },
       );

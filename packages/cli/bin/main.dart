@@ -97,17 +97,13 @@ void main(List<String> arguments) async {
     'web',
   );
 
-  // TODO remove this for production
-  const projectPath = '/Users/jenshorstmann/Files/Work/repos/'
-      'widgetbook/widgetbook_comparison_demo';
-
   final directory = Directory(buildPath);
-  final useCases = await UseCaseParser(projectPath: projectPath).parse();
-  final themes = await ThemeParser(projectPath: projectPath).parse();
-  final locales = await LocaleParser(projectPath: projectPath).parse();
-  final devices = await DeviceParser(projectPath: projectPath).parse();
+  final useCases = await UseCaseParser(projectPath: path).parse();
+  final themes = await ThemeParser(projectPath: path).parse();
+  final locales = await LocaleParser(projectPath: path).parse();
+  final devices = await DeviceParser(projectPath: path).parse();
   final textScaleFactors =
-      await TextScaleFactorParser(projectPath: projectPath).parse();
+      await TextScaleFactorParser(projectPath: path).parse();
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
     final uploadInfo = await WidgetbookHttpClient().uploadDeployment(
@@ -144,7 +140,8 @@ void main(List<String> arguments) async {
       );
     } else {
       print(
-        'HINT: No pull-request information available. Therefore, no review will be create. See docs for more information.',
+        'HINT: No pull-request information available. Therefore, no review will'
+        ' be created. See docs for more information.',
       );
     }
   } else {
