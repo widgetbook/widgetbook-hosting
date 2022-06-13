@@ -92,7 +92,9 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
       );
 
       // TODO fix this
-      final fileDiffs = await gitDir.diff(base: 'main');
+      final fileDiffs = await gitDir.diff(
+        base: 'main',
+      );
 
       final changedUseCases = <ChangedUseCase>[];
 
