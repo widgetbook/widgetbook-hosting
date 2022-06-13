@@ -15,7 +15,7 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
     super.fileSystem = const LocalFileSystem(),
   });
 
-  UseCaseData _getUseCase(Map<String, dynamic> data) {
+  UseCaseData _getUseCase(dynamic data) {
     final stringData = json.encode(data);
     final correctData = json.decode(stringData) as Map<String, dynamic>;
     return UseCaseData.fromJson(correctData);
@@ -25,7 +25,7 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
     for (final file in files) {
       final items = json.decode(
         file.readAsStringSync(),
-      ) as Iterable<Map<String, dynamic>>;
+      ) as Iterable<dynamic>;
       final useCases = List<UseCaseData>.from(
         items.map<UseCaseData>(
           _getUseCase,
@@ -91,7 +91,8 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
         allowSubdirectory: true,
       );
 
-      final fileDiffs = await gitDir.diff();
+      // TODO fix this
+      final fileDiffs = await gitDir.diff(base: 'main');
 
       final changedUseCases = <ChangedUseCase>[];
 
