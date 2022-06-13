@@ -126,7 +126,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.0.2"
   coverage:
     dependency: transitive
     description:
@@ -195,7 +195,7 @@ packages:
     description:
       path: "."
       ref: "feat/diff"
-      resolved-ref: "44b6edcc9fe6fc8165123fec536e294d756cd5e7"
+      resolved-ref: "07eccd4b7ea7085e0037af1e5df1dd6c26740d95"
       url: "https://github.com/JensHor/git.git"
     source: git
     version: "2.0.1"
