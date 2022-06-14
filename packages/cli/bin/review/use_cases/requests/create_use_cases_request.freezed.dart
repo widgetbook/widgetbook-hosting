@@ -26,9 +26,9 @@ mixin _$CreateUseCasesRequest {
   String get buildId => throw _privateConstructorUsedError;
   String get projectId => throw _privateConstructorUsedError;
   String get baseBranch => throw _privateConstructorUsedError;
-  String get refBranch => throw _privateConstructorUsedError;
+  String get headBranch => throw _privateConstructorUsedError;
   String get baseSha => throw _privateConstructorUsedError;
-  String get refSha => throw _privateConstructorUsedError;
+  String get headSha => throw _privateConstructorUsedError;
   List<ThemeData> get themes => throw _privateConstructorUsedError;
   List<LocaleData> get locales => throw _privateConstructorUsedError;
   List<DeviceData> get devices => throw _privateConstructorUsedError;
@@ -52,9 +52,9 @@ abstract class $CreateUseCasesRequestCopyWith<$Res> {
       String buildId,
       String projectId,
       String baseBranch,
-      String refBranch,
+      String headBranch,
       String baseSha,
-      String refSha,
+      String headSha,
       List<ThemeData> themes,
       List<LocaleData> locales,
       List<DeviceData> devices,
@@ -77,9 +77,9 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
     Object? buildId = freezed,
     Object? projectId = freezed,
     Object? baseBranch = freezed,
-    Object? refBranch = freezed,
+    Object? headBranch = freezed,
     Object? baseSha = freezed,
-    Object? refSha = freezed,
+    Object? headSha = freezed,
     Object? themes = freezed,
     Object? locales = freezed,
     Object? devices = freezed,
@@ -106,17 +106,17 @@ class _$CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.baseBranch
           : baseBranch // ignore: cast_nullable_to_non_nullable
               as String,
-      refBranch: refBranch == freezed
-          ? _value.refBranch
-          : refBranch // ignore: cast_nullable_to_non_nullable
+      headBranch: headBranch == freezed
+          ? _value.headBranch
+          : headBranch // ignore: cast_nullable_to_non_nullable
               as String,
       baseSha: baseSha == freezed
           ? _value.baseSha
           : baseSha // ignore: cast_nullable_to_non_nullable
               as String,
-      refSha: refSha == freezed
-          ? _value.refSha
-          : refSha // ignore: cast_nullable_to_non_nullable
+      headSha: headSha == freezed
+          ? _value.headSha
+          : headSha // ignore: cast_nullable_to_non_nullable
               as String,
       themes: themes == freezed
           ? _value.themes
@@ -151,9 +151,9 @@ abstract class _$$_CreateUseCasesRequestCopyWith<$Res>
       String buildId,
       String projectId,
       String baseBranch,
-      String refBranch,
+      String headBranch,
       String baseSha,
-      String refSha,
+      String headSha,
       List<ThemeData> themes,
       List<LocaleData> locales,
       List<DeviceData> devices,
@@ -179,9 +179,9 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
     Object? buildId = freezed,
     Object? projectId = freezed,
     Object? baseBranch = freezed,
-    Object? refBranch = freezed,
+    Object? headBranch = freezed,
     Object? baseSha = freezed,
-    Object? refSha = freezed,
+    Object? headSha = freezed,
     Object? themes = freezed,
     Object? locales = freezed,
     Object? devices = freezed,
@@ -208,17 +208,17 @@ class __$$_CreateUseCasesRequestCopyWithImpl<$Res>
           ? _value.baseBranch
           : baseBranch // ignore: cast_nullable_to_non_nullable
               as String,
-      refBranch: refBranch == freezed
-          ? _value.refBranch
-          : refBranch // ignore: cast_nullable_to_non_nullable
+      headBranch: headBranch == freezed
+          ? _value.headBranch
+          : headBranch // ignore: cast_nullable_to_non_nullable
               as String,
       baseSha: baseSha == freezed
           ? _value.baseSha
           : baseSha // ignore: cast_nullable_to_non_nullable
               as String,
-      refSha: refSha == freezed
-          ? _value.refSha
-          : refSha // ignore: cast_nullable_to_non_nullable
+      headSha: headSha == freezed
+          ? _value.headSha
+          : headSha // ignore: cast_nullable_to_non_nullable
               as String,
       themes: themes == freezed
           ? _value._themes
@@ -249,9 +249,9 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
       required this.buildId,
       required this.projectId,
       required this.baseBranch,
-      required this.refBranch,
+      required this.headBranch,
       required this.baseSha,
-      required this.refSha,
+      required this.headSha,
       required final List<ThemeData> themes,
       required final List<LocaleData> locales,
       required final List<DeviceData> devices,
@@ -281,11 +281,11 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
   @override
   final String baseBranch;
   @override
-  final String refBranch;
+  final String headBranch;
   @override
   final String baseSha;
   @override
-  final String refSha;
+  final String headSha;
   final List<ThemeData> _themes;
   @override
   List<ThemeData> get themes {
@@ -316,7 +316,7 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
 
   @override
   String toString() {
-    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId, baseBranch: $baseBranch, refBranch: $refBranch, baseSha: $baseSha, refSha: $refSha, themes: $themes, locales: $locales, devices: $devices, textScaleFactors: $textScaleFactors)';
+    return 'CreateUseCasesRequest(apiKey: $apiKey, useCases: $useCases, buildId: $buildId, projectId: $projectId, baseBranch: $baseBranch, headBranch: $headBranch, baseSha: $baseSha, headSha: $headSha, themes: $themes, locales: $locales, devices: $devices, textScaleFactors: $textScaleFactors)';
   }
 
   @override
@@ -330,9 +330,10 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
             const DeepCollectionEquality().equals(other.projectId, projectId) &&
             const DeepCollectionEquality()
                 .equals(other.baseBranch, baseBranch) &&
-            const DeepCollectionEquality().equals(other.refBranch, refBranch) &&
+            const DeepCollectionEquality()
+                .equals(other.headBranch, headBranch) &&
             const DeepCollectionEquality().equals(other.baseSha, baseSha) &&
-            const DeepCollectionEquality().equals(other.refSha, refSha) &&
+            const DeepCollectionEquality().equals(other.headSha, headSha) &&
             const DeepCollectionEquality().equals(other._themes, _themes) &&
             const DeepCollectionEquality().equals(other._locales, _locales) &&
             const DeepCollectionEquality().equals(other._devices, _devices) &&
@@ -349,9 +350,9 @@ class _$_CreateUseCasesRequest implements _CreateUseCasesRequest {
       const DeepCollectionEquality().hash(buildId),
       const DeepCollectionEquality().hash(projectId),
       const DeepCollectionEquality().hash(baseBranch),
-      const DeepCollectionEquality().hash(refBranch),
+      const DeepCollectionEquality().hash(headBranch),
       const DeepCollectionEquality().hash(baseSha),
-      const DeepCollectionEquality().hash(refSha),
+      const DeepCollectionEquality().hash(headSha),
       const DeepCollectionEquality().hash(_themes),
       const DeepCollectionEquality().hash(_locales),
       const DeepCollectionEquality().hash(_devices),
@@ -376,9 +377,9 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
           required final String buildId,
           required final String projectId,
           required final String baseBranch,
-          required final String refBranch,
+          required final String headBranch,
           required final String baseSha,
-          required final String refSha,
+          required final String headSha,
           required final List<ThemeData> themes,
           required final List<LocaleData> locales,
           required final List<DeviceData> devices,
@@ -399,11 +400,11 @@ abstract class _CreateUseCasesRequest implements CreateUseCasesRequest {
   @override
   String get baseBranch => throw _privateConstructorUsedError;
   @override
-  String get refBranch => throw _privateConstructorUsedError;
+  String get headBranch => throw _privateConstructorUsedError;
   @override
   String get baseSha => throw _privateConstructorUsedError;
   @override
-  String get refSha => throw _privateConstructorUsedError;
+  String get headSha => throw _privateConstructorUsedError;
   @override
   List<ThemeData> get themes => throw _privateConstructorUsedError;
   @override

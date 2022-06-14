@@ -16,9 +16,9 @@ _$_CreateUseCasesRequest _$$_CreateUseCasesRequestFromJson(
       buildId: json['buildId'] as String,
       projectId: json['projectId'] as String,
       baseBranch: json['baseBranch'] as String,
-      refBranch: json['refBranch'] as String,
+      headBranch: json['headBranch'] as String,
       baseSha: json['baseSha'] as String,
-      refSha: json['refSha'] as String,
+      headSha: json['headSha'] as String,
       themes: (json['themes'] as List<dynamic>)
           .map((e) => ThemeData.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -41,9 +41,9 @@ Map<String, dynamic> _$$_CreateUseCasesRequestToJson(
       'buildId': instance.buildId,
       'projectId': instance.projectId,
       'baseBranch': instance.baseBranch,
-      'refBranch': instance.refBranch,
+      'headBranch': instance.headBranch,
       'baseSha': instance.baseSha,
-      'refSha': instance.refSha,
+      'headSha': instance.headSha,
       'themes': instance.themes,
       'locales': instance.locales,
       'devices': instance.devices,

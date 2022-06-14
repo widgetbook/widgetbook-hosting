@@ -33,7 +33,7 @@
             "name": "debug upload base branch",
             "request": "launch",
             "type": "dart",
-            "program": "bin/cli.dart",
+            "program": "bin/cli_staging.dart",
             "cwd": "packages/cli",
             "args": [
                 "--path",
