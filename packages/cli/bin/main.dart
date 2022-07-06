@@ -29,7 +29,7 @@ void main(List<String> arguments) async {
     ..addOption(
       'path',
       help: 'The path to the build folder of your application.',
-      defaultsTo: './build/web',
+      mandatory: true,
     )
     ..addOption(
       'api-key',

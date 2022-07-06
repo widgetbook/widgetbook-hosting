@@ -18,7 +18,6 @@ class UseCaseParser extends GeneratorParser<ChangedUseCase> {
   UseCaseData _getUseCase(dynamic data) {
     final stringData = json.encode(data);
     final correctData = json.decode(stringData) as Map<String, dynamic>;
-    print('Parsing $correctData');
     return UseCaseData.fromJson(correctData);
   }
 
