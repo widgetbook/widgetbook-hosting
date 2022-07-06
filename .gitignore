@@ -12,3 +12,6 @@ web.zip
 
 # ignore compiled binaries
 *.aot
+*.exe
+
+test-stuff/

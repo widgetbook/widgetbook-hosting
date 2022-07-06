@@ -1,8 +1,16 @@
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:helper/helper.dart';
 import 'package:parser/parser.dart';
+import 'package:path/path.dart' as p;
+
+import 'review/devices/device_parser.dart';
+import 'review/locales/locales_parser.dart';
+import 'review/text_scale_factors/text_scale_factor_parser.dart';
+import 'review/themes/theme_parser.dart';
+import 'review/use_cases/user_case_parser.dart';
+import 'widgetbook_http_client.dart';
+import 'widgetbook_zip_encoder.dart';
 
 void main(List<String> arguments) async {
   final parser = ArgParser();
@@ -21,7 +29,7 @@ void main(List<String> arguments) async {
     ..addOption(
       'path',
       help: 'The path to the build folder of your application.',
-      defaultsTo: './build/web',
+      mandatory: true,
     )
     ..addOption(
       'api-key',
@@ -60,6 +68,14 @@ void main(List<String> arguments) async {
         // CLI is for users running the command locally.
         'CLI',
       ],
+    )
+    ..addOption(
+      'base-branch',
+      help: 'The base branch of the pull-request. For example, main or master.',
+    )
+    ..addOption(
+      'base-commit',
+      help: 'The SHA hash of the commit of the base branch.',
     );
 
   final args = parser.parse(arguments);
@@ -72,11 +88,25 @@ void main(List<String> arguments) async {
   final actor = args['actor'] as String;
   final gitProvider = args['git-provider'] as String;
 
-  final directory = Directory(path);
+  final baseBranch = args['base-branch'] as String?;
+  final baseCommit = args['base-commit'] as String?;
 
+  final buildPath = p.join(
+    path,
+    'build',
+    'web',
+  );
+
+  final directory = Directory(buildPath);
+  final useCases = await UseCaseParser(projectPath: path).parse();
+  final themes = await ThemeParser(projectPath: path).parse();
+  final locales = await LocaleParser(projectPath: path).parse();
+  final devices = await DeviceParser(projectPath: path).parse();
+  final textScaleFactors =
+      await TextScaleFactorParser(projectPath: path).parse();
   final file = WidgetbookZipEncoder().encode(directory);
   if (file != null) {
-    await WidgetbookHttpClient().uploadDeployment(
+    final uploadInfo = await WidgetbookHttpClient().uploadDeployment(
       deploymentFile: file,
       data: DeploymentData(
         branchName: branch,
@@ -87,6 +117,33 @@ void main(List<String> arguments) async {
         provider: gitProvider,
       ),
     );
+
+    if (uploadInfo != null &&
+        baseBranch != null &&
+        baseCommit != null &&
+        // If a review shall be created, the projects needs to use generator
+        // Generator requires to define at least one theme.
+        themes.isNotEmpty) {
+      await WidgetbookHttpClient().uploadReview(
+        apiKey: apiKey,
+        useCases: useCases,
+        buildId: uploadInfo['build'] as String,
+        projectId: uploadInfo['project'] as String,
+        baseBranch: baseBranch,
+        baseSha: baseCommit,
+        headBranch: branch,
+        headSha: commit,
+        themes: themes,
+        locales: locales,
+        devices: devices,
+        textScaleFactors: textScaleFactors,
+      );
+    } else {
+      print(
+        'HINT: No pull-request information available. Therefore, no review will'
+        ' be created. See docs for more information.',
+      );
+    }
   } else {
     print('Could not create .zip file for upload.');
   }
